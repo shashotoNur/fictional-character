@@ -6,7 +6,7 @@ Single page website that uses the [WinBox](https://github.com/nextapps-de/winbox
 
 Click on any of the list elements to access certain features of the site.\
 The drop down menu contains points to my online existence.\
-You can do the same in the command line.\
+You can do the same in the command line.
 
     `cd about`              : opens about content div in a winbox
     `cd contact`            : opens about content div in a winbox

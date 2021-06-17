@@ -10,6 +10,7 @@ const wait = txtElement.getAttribute('data-wait');
 const about = document.getElementById('about');
 const contact = document.getElementById('contact');
 const instructions = document.getElementById('instructions');
+
 const aboutContent = document.getElementById('about-content');
 const contactContent = document.getElementById('contact-content');
 const instructionContent = document.getElementById('instruction-content');
@@ -31,6 +32,7 @@ const cliColors    = ["#000", "#333", "#000"];
 
 var focusedId = 0, highestId = 0, colorIndex = 0, textColor, focusColor, warningColor = "#fc0303", executedCommand = false;
 
+
 const executeCommand = (inputValue) =>
 {
   cli.innerHTML = '';
@@ -46,11 +48,13 @@ const executeCommand = (inputValue) =>
     case commands[1]:
       contact.click();
       break;
+
     case commands[2]:
       executedCommand = true;
       cli.innerHTML += 'List of commands you can try:';
       recommendCommands('');
       break;
+
     case commands[3]:
       document.getElementById('github').click();
       cli.innerHTML += status;
@@ -67,6 +71,7 @@ const executeCommand = (inputValue) =>
       document.getElementById('discord').click();
       cli.innerHTML += status;
       break;
+
     default:
       cli.innerHTML += `<li id="0" style="color: ${warningColor}">Given input is not recognized as a command</li>`;
   };
@@ -99,6 +104,7 @@ const movefocus = (keycode) =>
   catch(err)
   {
     console.log(err);
+
     const inputValue = cliInput.value;
     if(inputValue !== readOnlyText) recommendCommands(inputValue);
   }
@@ -122,12 +128,13 @@ const recommendCommands = (inputValue) =>
   if(document.getElementById("0") !== null) document.getElementById("0").style.color = focusColor;
 };
 
+
 const pause = (time = 0) =>
 {
     return new Promise( (resolve) =>
-        {
-            setTimeout(() => { resolve(); }, ( time >= 0 ) ? time : 0);
-        });
+      {
+          setTimeout(() => { resolve(); }, ( time >= 0 ) ? time : 0);
+      });
 };
 
 const demonstrateCommands = async() =>
@@ -138,15 +145,16 @@ const demonstrateCommands = async() =>
 
   await pause(2000);
 
-  var evt = new CustomEvent('keyup');
-  evt.which = 13;
-  evt.keyCode = 13;
-  cliInput.dispatchEvent(evt);
+  var event = new CustomEvent('keyup');
+  event.which = 13;
+  event.keyCode = 13;
+  cliInput.dispatchEvent(event);
 
   cli.innerHTML += `<li id="0">Executed the command! Give it a try!</li>`;
 
   await pause(5000);
   executeCommand('commands -l');
+
   cliInput.value = readOnlyText;
 }
 
@@ -161,6 +169,7 @@ const changeThemes = () =>
 
   colorIndex++;
   if(colorIndex == 3) colorIndex = 0;
+
   setTimeout(() => { changeThemes() }, 25 * 1000);
 }
 
