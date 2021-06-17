@@ -89,6 +89,7 @@ nav .drop-down.closed
 {
   width: 200px;
   justify-content: left;
+  margin-left: 5%;
 }
 
 li
@@ -179,7 +180,7 @@ textarea:focus, input:focus
 @media only screen and (max-width: 768px) {
   h1
   {
-    font-size: 180%;
+    font-size: 140%;
     letter-spacing: -2px;
   }
 
@@ -202,7 +203,7 @@ textarea:focus, input:focus
     grid-template-columns: auto auto auto;
   }
 
-  nav ul li, .nav-button
+  .nav-button
   {
     margin-left: 0%;
     width: 100%;
