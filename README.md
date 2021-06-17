@@ -10,6 +10,7 @@ You can do the same in the command line.
 
     `cd about`              : opens about content div in a winbox
     `cd contact`            : opens about content div in a winbox
+    `cd instructions`       : opens about instructions div in a winbox
     `commands -l`           : lists all the available commands
     `findme github`         : find my profile on github
     `findme stack-overflow` : find my profile on stack overflow

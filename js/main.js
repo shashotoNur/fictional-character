@@ -20,7 +20,7 @@ const readOnlyLength = readOnlyText.length;
 
 const commands =
   [
-    "cd about", "cd contact",
+    "cd about", "cd contact", "cd instructions",
     "commands -l",
     "findme github", "findme stack-overflow", "findme facebook", "findme discord"
   ];
@@ -48,26 +48,29 @@ const executeCommand = (inputValue) =>
     case commands[1]:
       contact.click();
       break;
-
     case commands[2]:
+      instructions.click();
+      break;
+
+    case commands[3]:
       executedCommand = true;
       cli.innerHTML += 'List of commands you can try:';
       recommendCommands('');
       break;
 
-    case commands[3]:
+    case commands[4]:
       document.getElementById('github').click();
       cli.innerHTML += status;
       break;
-    case commands[4]:
+    case commands[5]:
       document.getElementById('stackOverflow').click();
       cli.innerHTML += status;
       break;
-    case commands[5]:
+    case commands[6]:
       document.getElementById('facebook').click();
       cli.innerHTML += status;
       break;
-    case commands[6]:
+    case commands[7]:
       document.getElementById('discord').click();
       cli.innerHTML += status;
       break;
@@ -283,12 +286,10 @@ class TypeWriter
   
       setTimeout(() => this.type(), typeSpeed);
     };
-    
 };
 
 (() =>
 {
-
   new TypeWriter(txtElement, words, wait);
   initializeDropdownMenu();
   initializeTextReadOnly();
@@ -296,5 +297,4 @@ class TypeWriter
   initializeWinboxes();
   changeThemes();
   demonstrateCommands();
-
 })();
