@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
 
 *
@@ -23,10 +24,7 @@ body
   line-height: 1.6;
 }
 
-html, body, .container
-{
-  height: 95%;
-}
+html, body, .container { height: 95%; }
 
 h1
 {
@@ -77,7 +75,6 @@ nav ul li
 
 nav .drop-down
 {
-  margin-left: 7%;
   list-style: none; 
   overflow: hidden;
   width: 550px;
@@ -177,4 +174,37 @@ textarea:focus, input:focus
   from,
   to { color: transparent; }
   50% { color: var(--text-color); }
+}
+
+@media only screen and (max-width: 768px) {
+  h1
+  {
+    font-size: 180%;
+    letter-spacing: -2px;
+  }
+
+  nav
+  {
+    width: 100%;
+    margin-left: 2%;
+  }
+
+  nav .drop-down
+  {
+    list-style: none; 
+    overflow: hidden;
+    width: 95%;
+  }
+
+  #dropdown-list
+  {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  nav ul li, .nav-button
+  {
+    margin-left: 0%;
+    width: 100%;
+  }
 }

@@ -178,10 +178,12 @@ const changeThemes = () =>
 
 const addWinBox = (title, height, top, left, mount) =>
 {
+  var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  const width = (deviceWidth <= 728) ? '100%' : '40%';
   new WinBox(
     {
       title: title,
-      width: '40%',
+      width: width,
       height: height,
       top: top,
       left: left,
@@ -291,6 +293,7 @@ class TypeWriter
 (() =>
 {
   new TypeWriter(txtElement, words, wait);
+
   initializeDropdownMenu();
   initializeTextReadOnly();
   initializeTypeTracker();
