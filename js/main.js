@@ -1,7 +1,9 @@
-const cli = document.getElementById('cli');
-const cliInput = document.getElementById('cli-input');
+
 const navBtn = document.querySelector('.nav-button');
 const navLinks = document.querySelectorAll('.hidden-links');
+
+const cli = document.getElementById('cli');
+const cliInput = document.getElementById('cli-input');
 
 const txtElement = document.querySelector('.txt-type');
 const words = JSON.parse(txtElement.getAttribute('data-words'));
@@ -30,7 +32,9 @@ const focusColors  = ["#03b6fc", "#00aa00", "#00aa00"];
 const bodyColors   = ["#333", "#000", "#333"];
 const cliColors    = ["#000", "#333", "#000"];
 
-var focusedId = 0, highestId = 0, colorIndex = 0, textColor, focusColor, warningColor = "#fc0303", executedCommand = false;
+var focusedId = 0, highestId = 0, colorIndex = 0,
+    textColor, focusColor, warningColor = "#fc0303",
+    executedCommand = false;
 
 
 const executeCommand = (inputValue) =>
@@ -91,6 +95,7 @@ const insertCommand = (command = focusedId) =>
 
 const movefocus = (keycode) =>
 {
+
   try
   {
     if(document.getElementById('0') !== null)
@@ -111,6 +116,7 @@ const movefocus = (keycode) =>
     const inputValue = cliInput.value;
     if(inputValue !== readOnlyText) recommendCommands(inputValue);
   }
+
 }
 
 const recommendCommands = (inputValue) =>
@@ -134,14 +140,15 @@ const recommendCommands = (inputValue) =>
 
 const pause = (time = 0) =>
 {
-    return new Promise( (resolve) =>
-      {
-          setTimeout(() => { resolve(); }, ( time >= 0 ) ? time : 0);
-      });
+  return new Promise( (resolve) =>
+    {
+      setTimeout(() => { resolve(); }, ( time >= 0 ) ? time : 0);
+    });
 };
 
 const demonstrateCommands = async() =>
 {
+
   await pause(2000);
   cliInput.value = `${readOnlyText}cd about`;
   cli.innerHTML += `<li id="0">Wrote a command in the terminal!(cd about)</li>`;
@@ -159,6 +166,7 @@ const demonstrateCommands = async() =>
   executeCommand('commands -l');
 
   cliInput.value = readOnlyText;
+
 }
 
 const changeThemes = () =>
@@ -180,6 +188,8 @@ const addWinBox = (title, height, top, left, mount) =>
 {
   var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
   const width = (deviceWidth <= 728) ? '100%' : '40%';
+  if(deviceWidth <= 728) left = 0;
+
   new WinBox(
     {
       title: title,
@@ -228,8 +238,24 @@ const initializeTextReadOnly = () =>
 
   cliInput.addEventListener('keypress', (event) =>
   {
-    if ((event.which != 0) && (cliInput.selectionStart < readOnlyLength)) event.preventDefault();
+    var which = event.which;
+    if ((which != 0) && (cliInput.selectionStart < readOnlyLength)) event.preventDefault();
   });
+
+  var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  if(deviceWidth <= 728)
+  {
+    cliInput.addEventListener('keyup', (event) =>
+    {
+      var which = event.which;
+
+      if ((which == 8 && cliInput.selectionStart <= readOnlyLength) ||
+          (which == 46 && cliInput.selectionStart < readOnlyLength) ||
+          (event.which != 0) && (cliInput.selectionStart < readOnlyLength)) 
+        event.preventDefault();
+    });
+  };
+
 }
 
 const initializeDropdownMenu = () =>
@@ -241,7 +267,7 @@ const initializeDropdownMenu = () =>
         navLink.className = (navLink.className === "hidden-links") ? "" : "hidden-links";
       });
       navBtn.innerHTML = (navBtn.innerHTML.includes('ᐳ')) ? '&#5167;' :'&#5171;'
-  }, false);
+  });
 }
 
 class TypeWriter 
@@ -256,24 +282,24 @@ class TypeWriter
       this.type();
       this.isDeleting = false;
     };
-  
+
     type()
     {
       const current = this.wordIndex % this.words.length;
       const fullTxt = this.words[current];
-  
+
       if(this.isDeleting) 
         this.txt = fullTxt.substring(0, this.txt.length - 1);
       else
         this.txt = fullTxt.substring(0, this.txt.length + 1);
-  
+
       this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
-  
+
       var typeSpeed = 300;
-  
+
       if(this.isDeleting)
         typeSpeed /= 2;
-  
+
       if(!this.isDeleting && this.txt === fullTxt)
       {
         typeSpeed = this.wait;
@@ -290,8 +316,11 @@ class TypeWriter
     };
 };
 
+
+
 (() =>
 {
+
   new TypeWriter(txtElement, words, wait);
 
   initializeDropdownMenu();
@@ -300,4 +329,5 @@ class TypeWriter
   initializeWinboxes();
   changeThemes();
   demonstrateCommands();
+
 })();

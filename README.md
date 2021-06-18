@@ -1,6 +1,12 @@
 # Portfolio Site
 
-Single page website that uses the [WinBox](https://github.com/nextapps-de/winbox) library
+Single page website that uses the [WinBox](https://github.com/nextapps-de/winbox) library.
+
+## Details
+
+Base directory contains an html file which is the root of the project.\
+There are also three other directories for javascript, stylesheet and images.\
+The directory 'img' contains the icon for the website.
 
 ## Manual
 
@@ -16,3 +22,14 @@ You can do the same in the command line.
     `findme stack-overflow` : find my profile on stack overflow
     `findme facebook`       : find my profile on facebook
     `findme discord`        : find my profile on discord
+
+## Instructions
+
+As you write in the command line, all the available commands similar to your text will be shown.\
+Among them, the first one would be selected by default, thus it will have a different colour.\
+You can navigate those commands using the up and down arrow keys and insert the selected command into the interface with the right arrow key on keyboard.\
+Press enter to submit your command.
+
+### Live Demo
+
+You can view a live demo here as a [Github Page](https://shashoto-nur.github.io/fictional-character).
