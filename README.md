@@ -20,16 +20,16 @@ You can do the same in the command line.
     `commands -l`           : lists all the available commands
     `findme github`         : find my profile on github
     `findme stack-overflow` : find my profile on stack overflow
-    `findme facebook`       : find my profile on facebook
-    `findme discord`        : find my profile on discord
+    `findme telegram`       : find my profile on telegram
+    `findme reddit`        : find my profile on reddit
 
 ## Instructions
 
 As you write in the command line, all the available commands similar to your text will be shown.\
-Among them, the first one would be selected by default, thus it will have a different colour.\
+Among them, the first one would be selected by default, thus it will have a different color.\
 You can navigate those commands using the up and down arrow keys and insert the selected command into the interface with the right arrow key on keyboard.\
 Press enter to submit your command.
 
 ### Live Demo
 
-You can view a live demo here as a [Github Page](https://shashoto-nur.github.io/fictional-character).
+You can view a live demo here as a [Github Page](https://shashotoNur.github.io/fictional-character).
